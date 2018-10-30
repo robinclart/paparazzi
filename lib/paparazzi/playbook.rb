@@ -1,17 +1,14 @@
 module Paparazzi
   class Playbook
-    def initialize(source)
-      @source  = source
-      @context = Context.new
-    end
-
-    def self.open(path)
-      source = File.read(path)
-      new(source)
+    def initialize(path)
+      @path    = path
+      @context = Context.new(File.dirname(@path))
     end
 
     def run!
-      @context.run(@source)
+      @context.run(@path)
+    ensure
+      @context.close
     end
   end
 end

@@ -5,35 +5,47 @@ module Paparazzi
       safari:  "Safari",
     }
 
-    def use(name)
+    def initialize(dirname)
+      @dirname = dirname
+    end
+
+    def use(name, width: 1280, height: 800)
+      return if @browser
+
       @name    = name
       @browser = Watir::Browser.new(name)
 
-      @browser.window.resize_to(1280, 800)
+      @browser.window.resize_to(width, height)
     end
 
     def name
-      return @name if @name
+      unless @name
+        use :firefox
+      end
 
-      use :firefox
+      @name
     end
 
     def browser
-      return @browser if @browser
+      unless @browser
+        use :firefox
+      end
 
-      use :firefox
+      @browser
     end
 
-    def run(source)
+    def run(filename)
+      path   = File.expand_path(filename, @dirname)
+      path   = "#{path}.rb" if path[-3, 3] != ".rb"
+      source = File.read(path)
+
       instance_eval(source)
-    ensure
-      browser.close
     end
 
     def snap(filename)
       window_id = `osascript -e 'tell app "#{BROWSERS[name]}" to id of window 1'`
 
-      sleep 0.2 # ensure the page finishes to load before taking a screenshot
+      sleep 0.2 # ensure the page finishes to load before taking a screenshot.
 
       `screencapture -l #{window_id.strip} #{filename}-#{name}.png`
     end
