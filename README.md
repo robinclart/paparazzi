@@ -33,13 +33,13 @@ You can also omit the playbook extension.
 
 ## Playbook
 
-A playbook is a ruby script that describe the steps before taking screenshots. You can directory `goto` some page, fill some inputs, submits forms, click on specific elements, etc.
+A playbook is a ruby script that describe the steps before taking screenshots. You can directly `goto` some page, fill some inputs, submits forms, click on specific elements, etc.
 
 Most of the methods are defined by the Watir gem. [Read their guides](http://watir.com/guides/) to learn more about how to navigate and interact with site and apps. **Note** that all the methods in the playbook will be forwarded to an instance of `Watir::Browser` automatically for convenience sake.
 
 ## API
 
-This gem adds 3 additional methods on top of all the method provided by `watir`:
+This gem adds 3 additional methods on top of all the methods provided by `watir`:
 
 ### Use
 
