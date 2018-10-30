@@ -10,7 +10,7 @@ For **Firefox** you'll need the following components installed before being able
 - Firefox (can be installed using `brew cask install firefox`)
 - `geckodriver` (can be installed using `brew install geckodriver`)
 
-And for Safari you'll need the following done:
+And for **Safari** you'll need the following done:
 
 - Run `safaridriver --enable` to allow safari to be controlled remotely.
 
@@ -29,15 +29,17 @@ Once this is done you'll be able to run a playbook like so:
 $ paparazzi playbook.rb
 ```
 
-You can also a omit the playbook extension.
+You can also omit the playbook extension.
 
 ## Playbook
 
-A playbook is a ruby script that describe the steps to take the screenshots. You can directory `goto` some page, fill some inputs, submits forms, click on specific elements, etc.
+A playbook is a ruby script that describe the steps before taking screenshots. You can directory `goto` some page, fill some inputs, submits forms, click on specific elements, etc.
 
-Most of the methods are defined by the Watir gem. [Read their guides](http://watir.com/guides/) to learn more about how to navigate a website. **Note** that all the methods in the playbook will be forwarded to an instance of `Watir::Browser` automatically for convenience sake.
+Most of the methods are defined by the Watir gem. [Read their guides](http://watir.com/guides/) to learn more about how to navigate and interact with site and apps. **Note** that all the methods in the playbook will be forwarded to an instance of `Watir::Browser` automatically for convenience sake.
 
-This gem adds 3 additional methods:
+## API
+
+This gem adds 3 additional methods on top of all the method provided by `watir`:
 
 ### Use
 
