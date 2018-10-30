@@ -6,4 +6,4 @@ path     = File.expand_path(ARGV.first)
 puts path
 playbook = Paparazzi::Playbook.new(path)
 
-playbook.run!()
+playbook.run!
